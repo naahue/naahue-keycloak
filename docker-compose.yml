@@ -25,3 +25,14 @@ services:
     command: start-dev
     ports:
       - "8080:8080"
+
+  sherpa:
+    container_name: sherpa
+    image: ghcr.io/identicum/sherpa-deploy:latest
+    pull_policy: always
+    ports:
+      - "9000:9000"
+    volumes:
+    - "C:/Users/nahue/mi-app-docker/terraform:/terraform"
+    working_dir: /terraform
+    command: "python apply-config.py"
