@@ -1,3 +1,1 @@
-terraform/objects/terraform.tfstate
-terraform/objects/terraform.tfstate.backup
-terraform/objects/.terraform.lock.hcl
+terraform/objects/terraform.tfstate*
