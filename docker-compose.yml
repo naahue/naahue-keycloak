@@ -47,20 +47,6 @@ services:
     ports:
       - "80:80"
 
-  prueba:
-    image: ghcr.io/identicum/ipax:latest
-    container_name: prueba
-    restart: always
-    environment:
-      NGINX_RESOLVER: 127.0.0.11 valid=5s
-      NGINX_LOG_LEVEL: debug
-      OIDC_DISCOVERY: http://keycloakweb:8080/realms/restusers/.well-known/openid-configuration
-      OIDC_CLIENT_ID: prueba_client_id
-      OIDC_CLIENT_SECRET: prueba_client_secret
-      OIDC_SCOPE: openid profile
-      OIDC_POST_LOGOUT_REDIRECT_URI: http://prueba/logoutSuccess.html
-      OIDC_REDIRECT_URI: http://prueba/private/redirect_uri
-
   web1:
     image: ghcr.io/identicum/nginx:latest
     container_name: web1
