@@ -60,7 +60,7 @@ services:
     ports:
       - "9000:9000"
     volumes:
-    - "C:/Users/nahue/mi-app-docker/terraform:/terraform"
+      - "./terraform:/terraform"
     working_dir: /terraform
     command: "python apply-config.py"
     depends_on:

@@ -1,3 +1,5 @@
+terraform/objects/terraform.tfstate*
+
 **/.terraform/*
 
 *.tfstate
