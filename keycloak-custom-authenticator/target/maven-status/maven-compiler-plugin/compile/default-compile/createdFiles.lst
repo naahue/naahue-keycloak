@@ -1,0 +1,2 @@
+com\identicum\keycloak\CustomAuthenticator.class
+com\identicum\keycloak\CustomAuthenticatorFactory.class
