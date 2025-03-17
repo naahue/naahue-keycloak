@@ -1,0 +1,16 @@
+request:
+  method: POST
+  path: "/users"
+  body: "{\"email\": \"test@id.com\", \"password\": \"123\", \"firstname\": \"test\", \"lastname\": \"test\"}"
+response: 
+  statusCode: 201
+  headers:
+    Content-Type: 
+      - "application/json"
+  body: >
+    {
+    "email": "test@id.com",
+    "password": "123",
+    "firstname": "test",
+    "lastname": "test"
+    }
