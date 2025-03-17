@@ -101,5 +101,14 @@ services:
 #    ports:
 #      - "8083:80"
 
+  mmock:
+    image: jordimartin/mmock
+    container_name: mmock
+    ports:
+      - "8082:8082"
+      - "8083:8083"
+    volumes:
+      - ./mocks/config:/config
+
 volumes:
   postgres_data:
