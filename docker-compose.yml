@@ -28,7 +28,8 @@ services:
     volumes:
       - "./keycloak-custom-authenticator/target/keycloak-lab-authenticator-1.0-SNAPSHOT.jar:/opt/keycloak/providers/keycloak-lab-authenticator-1.0-SNAPSHOT.jar"
       - "./keycloak-rest-repo/target/keycloak-lab-repo-1.0.0-SNAPSHOT.jar:/opt/keycloak/providers/keycloak-lab-repo-1.0.0-SNAPSHOT.jar"
-
+      - "./sherpa-theme/target/sherpa-theme.jar:/opt/keycloak/themes/sherpa/"
+      
 # keycloak2:
 #   image: ghcr.io/identicum/keycloak:25.0
 #   container_name: keycloak2

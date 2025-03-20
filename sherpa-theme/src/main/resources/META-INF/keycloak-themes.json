@@ -1,0 +1,6 @@
+{
+  "themes": [{
+    "name" : "sherpa",
+    "types": [ "admin", "login", "email", "account" ]
+  }]
+}
