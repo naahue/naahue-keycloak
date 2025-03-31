@@ -28,7 +28,7 @@ services:
     volumes:
       - "./keycloak-custom-authenticator/target/keycloak-lab-authenticator-1.0-SNAPSHOT.jar:/opt/keycloak/providers/keycloak-lab-authenticator-1.0-SNAPSHOT.jar"
       - "./keycloak-rest-repo/target/keycloak-lab-repo-1.0.0-SNAPSHOT.jar:/opt/keycloak/providers/keycloak-lab-repo-1.0.0-SNAPSHOT.jar"
-      - "./sherpa-theme/target/sherpa-theme.jar:/opt/keycloak/themes/sherpa/"
+      - ./sherpa-theme/src/main/resources/theme/sherpa/:/opt/keycloak/themes/sherpa/
       
 # keycloak2:
 #   image: ghcr.io/identicum/keycloak:25.0
@@ -68,7 +68,8 @@ services:
     working_dir: /terraform
     command: "python apply-config.py"
     depends_on:
-      - keycloak
+      keycloak:
+        condition: service_healthy
 
 #  proxy:
 #    image: ghcr.io/identicum/nginx:latest
@@ -110,6 +111,29 @@ services:
       - "8083:8083"
     volumes:
       - ./mocks/config:/config
+
+  demoapp:
+    container_name: demoapp
+    image: ghcr.io/identicum/ipax:latest
+    restart: always
+    environment:
+      NGINX_RESOLVER: 127.0.0.11 valid=5s
+      NGINX_LOG_LEVEL: debug
+      OIDC_CLIENT_ID: myclient
+      OIDC_CLIENT_SECRET: myclient
+      OIDC_DISCOVERY: http://idp:8080/realms/restusers/.well-known/openid-configuration
+      OIDC_SCOPE: openid profile
+      OIDC_POST_LOGOUT_REDIRECT_URI: http://demoapp/logoutSuccess.html
+
+  nginx:
+    container_name: nginx
+    image: nginx:alpine
+    volumes:
+      - ./nginx/nginx2.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 80:80
+    depends_on:
+      - demoapp
 
 volumes:
   postgres_data:

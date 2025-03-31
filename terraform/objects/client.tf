@@ -1,6 +1,7 @@
 resource "keycloak_openid_client" "myclient" {
   realm_id = keycloak_realm.restusers.id
   client_id = "myclient"
+  client_secret = "myclient"
   name = "client"
   enabled = true
   access_type = "PUBLIC"

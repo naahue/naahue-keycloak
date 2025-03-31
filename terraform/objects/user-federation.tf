@@ -1,6 +1,5 @@
 resource "keycloak_custom_user_federation" "custom_user_federation" {
-  depends_on = [ keycloak_user.user ]
-  name = "test"
+  name = "my_custom_user_federation"
   realm_id = keycloak_realm.restusers.id
   provider_id = "rest-repo-provider"
   cache_policy = "NO_CACHE"

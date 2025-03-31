@@ -9,8 +9,8 @@ terraform {
 
 provider "keycloak" {
   client_id     = "admin-cli"
-  username      = "admin"
-  password      = "admin"
-  url           = "http://keycloak:8080"
+  username      = var.admin_username
+  password      = var.admin_password
+  url           = var.keycloak_url
   base_path     = "" 
 }
